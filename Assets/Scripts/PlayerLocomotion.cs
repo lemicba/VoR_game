@@ -40,8 +40,6 @@ namespace EC
         float fallingSpeed = 45;
         [SerializeField]
         float walkingSpeed = 3;
-        [SerializeField]
-        float jumpForce = 8f;
 
 
 
@@ -56,7 +54,7 @@ namespace EC
             animatorHandler.Initialize();
 
             playerManager.isGrounded = true;
-            ignoreForGroundCheck = ~(1 << 8 | 1 << 11);
+            ignoreForGroundCheck = ~(1 << 8 | 1 << 2);
         }
 
         #region Movement
@@ -161,15 +159,15 @@ namespace EC
             Vector3 origin = myTransform.position;
             origin.y += groundDetectionRayStartPoing;
 
-            if(Physics.Raycast(origin, myTransform.forward, out hit, 0.4f))
+            if (Physics.Raycast(origin, myTransform.forward, out hit, 0.4f))
             {
                 moveDirection = Vector3.zero;
             }
 
-            if(playerManager.isInAir)
+            if (playerManager.isInAir)
             {
                 rigidbody.AddForce(-Vector3.up * fallingSpeed);
-                rigidbody.AddForce(moveDirection * fallingSpeed / 10f);
+                rigidbody.AddForce(moveDirection * fallingSpeed / 5f);
             }
 
             Vector3 dir = moveDirection;
@@ -251,17 +249,12 @@ namespace EC
 
             if (inputHandler.jump_Input)
             {
-                if (inputHandler.moveAmount > 0)
-                {
-                    rigidbody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
-                    animatorHandler.PlayTargetAnimation("Jump", true);
-                    //moveDirection = cameraObject.forward * inputHandler.vertical;
-                    //moveDirection += cameraObject.right * inputHandler.horizontal;
-                    //animatorHandler.PlayTargetAnimation("Jump", true);
-                    //moveDirection.y = 0;
-                    //Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
-                    //myTransform.rotation = jumpRotation;
-                }
+                moveDirection = cameraObject.forward * inputHandler.vertical;
+                moveDirection += cameraObject.right * inputHandler.horizontal;
+                moveDirection.y = 0;
+                animatorHandler.PlayTargetAnimation("Jump", true);
+                Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
+                myTransform.rotation = jumpRotation;
             }
         }
         #endregion

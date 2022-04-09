@@ -6,25 +6,28 @@ namespace EC
 {
     public class EnemyStats : MonoBehaviour
     {
-        public int healthLevel = 10;
+        public int healthLevel = 25;
         public int maxHealth;
         public int currentHealth;
+        CapsuleCollider m_Collider;
 
         Animator animator;
 
         private void Awake()
         {
             animator = GetComponentInChildren<Animator>();
+            
         }
         void Start()
         {
             maxHealth = SetMaxHealthLevel();
             currentHealth = maxHealth;
+            m_Collider = GetComponentInChildren<CapsuleCollider>();
         }
 
         private int SetMaxHealthLevel()
         {
-            maxHealth = healthLevel * 10;
+            maxHealth = healthLevel;
             return maxHealth;
         }
 
@@ -38,6 +41,7 @@ namespace EC
             {
                 currentHealth = 0;
                 animator.Play("Dead_01");
+                m_Collider.enabled = !m_Collider.enabled;
             }
         }
     }

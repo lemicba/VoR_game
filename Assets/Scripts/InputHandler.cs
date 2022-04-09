@@ -13,6 +13,7 @@ namespace EC
         public float mouseY;
 
         public bool b_Input;
+        public bool a_Input;
         public bool rb_Input;
         public bool rt_Input;
         public bool jump_Input;
@@ -56,6 +57,7 @@ namespace EC
             MoveInput(delta);
             HandleRollInput(delta);
             HandleAttackInput(delta);
+            HandleInteractingInput();
             HandleJumpInput();
         }
 
@@ -123,6 +125,10 @@ namespace EC
             }
         }
 
+        private void HandleInteractingInput()
+        {
+            inputActions.PlayerActions.A.performed += i => a_Input = true;
+        }
         private void HandleJumpInput()
         {
             inputActions.PlayerActions.Jump.performed += i => jump_Input = true;

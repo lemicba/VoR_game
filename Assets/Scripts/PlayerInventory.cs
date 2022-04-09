@@ -11,6 +11,8 @@ namespace EC
         public WeaponItem rightWeapon;
         public WeaponItem leftWeapon;
 
+        public List<WeaponItem> weaponsInventory;
+
         private void Awake()
         {
             weaponSlotsManager = GetComponentInChildren<WeaponSlotManager>();

@@ -28,6 +28,7 @@ namespace EC
             animatorHandler.PlayTargetAnimation("Pick Up Item", true);
             playerManager.itemIteractableGameObject.GetComponentInChildren<Text>().text = messageInUI;
             playerManager.itemIteractableGameObject.SetActive(true);
+            EventManager.TriggerOnDoorOpen();
             Destroy(gameObject);
 
         }

@@ -48,6 +48,12 @@ namespace EC {
                     enemyStats.TakeDamage(currentWeaponDamage);
                 }
             }
+
+            if (collision.CompareTag("Boss"))
+            {
+                Debug.Log("le pegaste");
+                collision.GetComponent<Boss>().HP_Min -= currentWeaponDamage;
+            }
         }
     }
 }

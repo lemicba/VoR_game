@@ -22,17 +22,17 @@ namespace EC
                         boss.hit_Select = 0;
                         break;
                     case 1:
-                        ani.SetFloat("skills", 0);
+                        ani.SetFloat("skills", 0.2f);
                         boss.hit_Select = 1;
                         break;
                     case 2:
-                        ani.SetFloat("skills", 0);
+                        ani.SetFloat("skills", 0.4f);
                         boss.hit_Select = 2;
                         break;
                     case 3:
                         if(boss.fase == 2)
                         {
-                            ani.SetFloat("skills", 0);
+                            ani.SetFloat("skills", 1);
                         }
                         else
                         {
@@ -46,16 +46,6 @@ namespace EC
                 boss.atacando = true;
                 GetComponent<CapsuleCollider>().enabled = false;
             }
-        }
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
     }
 }

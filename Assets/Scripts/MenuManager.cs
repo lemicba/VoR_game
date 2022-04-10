@@ -7,7 +7,17 @@ public class MenuManager : MonoBehaviour
 {
     public void GameScene()
     {
-        SceneManager.LoadScene("Level");
+        SceneManager.LoadScene("Level 1");
+    }
+
+    public void VolverMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void IrCreditos()
+    {
+        SceneManager.LoadScene("Creditos");
     }
 
     public void ContinueGame()

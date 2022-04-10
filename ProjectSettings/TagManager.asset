@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Interactable
   - Arma
+  - Boss
   layers:
   - Default
   - TransparentFX

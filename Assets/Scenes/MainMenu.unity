@@ -510,7 +510,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Opciones
+  m_Text: Creditos
 --- !u!222 &517647964
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1148,7 +1148,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2082025922}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: GameScene
+        m_MethodName: IrCreditos
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -7,7 +7,7 @@ namespace EC
 {
     public class Boss : MonoBehaviour
     {
-        public int rutina;
+        public int rutina = 0;
         public float cronometro;
         public float time_rutinas;
         public Animator ani;
@@ -60,7 +60,7 @@ namespace EC
                 point.transform.LookAt(target.transform.position);
                 musica.enabled = true;
 
-                if (Vector3.Distance(transform.position, target.transform.position) < 1 && !atacando)
+                if (Vector3.Distance(transform.position, target.transform.position) < 7f && !atacando)
                 {
                     switch (rutina)
                     {
@@ -99,7 +99,7 @@ namespace EC
                             ani.SetBool("walk", false);
                             ani.SetBool("run", false);
                             ani.SetBool("attack", true);
-                            ani.SetFloat("skills", 0);
+                            ani.SetFloat("skills", 0.8f);
                             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
                             rango.GetComponent<CapsuleCollider>().enabled = false;
                             break;
@@ -110,7 +110,7 @@ namespace EC
                                 ani.SetBool("walk", false);
                                 ani.SetBool("run", false);
                                 ani.SetBool("attack", true);
-                                ani.SetFloat("skills", 0);
+                                ani.SetFloat("skills", 0.6f);
                                 hit_Select = 3;
                                 rango.GetComponent<CapsuleCollider>().enabled = false;
 
@@ -136,7 +136,7 @@ namespace EC
                                 ani.SetBool("walk", false);
                                 ani.SetBool("run", false);
                                 ani.SetBool("attack", true);
-                                ani.SetFloat("skills", 0);
+                                ani.SetFloat("skills", 1);
                                 rango.GetComponent<CapsuleCollider>().enabled = false;
                                 transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 0.5f);
 
@@ -147,7 +147,6 @@ namespace EC
                                 cronometro = 0;
                             }
                             break;
-
                     }
 
                 }
@@ -247,11 +246,12 @@ namespace EC
 
         public void Vivo()
         {
-            if(HP_Min < 500)
+            if(HP_Min < 250)
             {
                 fase = 2;
                 time_rutinas = 1;
             }
+
             Comportamiento_Boss();
 
             if(lanza_llamas)
@@ -262,7 +262,7 @@ namespace EC
 
         void Update()
         {
-            barra.fillAmount = HP_Min / HP_Max;
+            // barra.fillAmount = HP_Min / HP_Max;
             if(HP_Min > 0)
             {
                 Vivo();

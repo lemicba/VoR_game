@@ -8,11 +8,6 @@ namespace EC
     {
         private float cronometro;
 
-        void Start()
-        {
-
-        }
-
         void Update()
         {
             transform.Translate(Vector3.forward * 6 * Time.deltaTime);

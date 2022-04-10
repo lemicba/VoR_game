@@ -14,16 +14,5 @@ namespace EC
                 coll.GetComponent<PlayerStats>().TakeDamage(damage);
             }
         }
-        void Start()
-
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }

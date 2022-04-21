@@ -67,6 +67,7 @@ namespace EC
             cameraPivotTransform.localRotation = targetRotation;
         }
 
+
         private void HandleCameraCollision(float delta)
         {
             targetPosition = defaulPosition;
@@ -90,6 +91,41 @@ namespace EC
             cameraTransformPosition.z = Mathf.Lerp(cameraTransform.localPosition.z, targetPosition, delta / 0.2f);
             cameraTransform.localPosition = cameraTransformPosition;
         }
+
+
+
+
+
+
+
+
+
+
+        //private void HandleCameraCollision(float delta)
+        //{
+        //    targetPosition = defaulPosition;
+        //    RaycastHit hit;
+        //    Vector3 direction = cameraTransform.position - cameraPivotTransform.position;
+        //    direction.Normalize();
+        //    Debug.Log("entro CameraCollision");
+        //    if (Physics.SphereCast
+        //        (cameraPivotTransform.position, cameraSphereRadius, direction, out hit, Mathf.Abs(targetPosition)
+        //        , ignoreLayers))
+        //    {
+        //        Debug.Log("entro SphereCast");
+        //        float dis = Vector3.Distance(cameraPivotTransform.position, hit.point);
+        //        targetPosition = -(dis - cameraCollisionOffset);
+        //    }
+
+        //    if(Mathf.Abs(targetPosition) < minimumCollisionOffset)
+        //    {
+        //        targetPosition = -minimumCollisionOffset;
+        //        Debug.Log("entro minimumCollision");
+        //    }
+
+        //    cameraTransformPosition.z = Mathf.Lerp(cameraTransform.localPosition.z, targetPosition, delta / 0.2f);
+        //    cameraTransform.localPosition = cameraTransformPosition;
+        //}
     }
 
 }

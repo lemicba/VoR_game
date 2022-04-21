@@ -9,6 +9,8 @@ namespace EC
         public int healthLevel = 25;
         public int maxHealth;
         public int currentHealth;
+        public bool isAlive;
+        EnemyOne enemyOne;
         CapsuleCollider m_Collider;
 
         Animator animator;
@@ -16,7 +18,8 @@ namespace EC
         private void Awake()
         {
             animator = GetComponentInChildren<Animator>();
-            
+            enemyOne = GetComponent<EnemyOne>();
+            isAlive = true;
         }
         void Start()
         {
@@ -42,6 +45,8 @@ namespace EC
                 currentHealth = 0;
                 animator.Play("Dead_01");
                 m_Collider.enabled = !m_Collider.enabled;
+                isAlive = false;
+                enemyOne.FinalAnim();
             }
         }
     }

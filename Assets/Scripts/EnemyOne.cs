@@ -6,7 +6,6 @@ namespace EC
 {
     public class EnemyOne : MonoBehaviour
     {
-
         public int routine;
         public float chronometer;
         public Animator ani;
@@ -26,10 +25,12 @@ namespace EC
         }
         void Update()
         {
-            EnemyBehavior();
-            if (pressBtn)
-            {
-                enemyStats.TakeDamage(25);
+            if(enemyStats.isAlive == true) { 
+                EnemyBehavior();
+                if (pressBtn)
+                {
+                    enemyStats.TakeDamage(25);
+                }
             }
         }
 

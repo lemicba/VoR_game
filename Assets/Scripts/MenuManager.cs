@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    public GameObject creditosGameObject;
+
     public void GameScene()
     {
         SceneManager.LoadScene("Level 1");
@@ -17,7 +19,12 @@ public class MenuManager : MonoBehaviour
 
     public void IrCreditos()
     {
-        SceneManager.LoadScene("Creditos");
+        creditosGameObject.SetActive(true);
+    }
+
+    public void VolverCreditos()
+    {
+        creditosGameObject.SetActive(false);
     }
 
     public void ContinueGame()

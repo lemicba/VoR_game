@@ -41,6 +41,7 @@ namespace EC {
             {
                 currentHealth = 0;
                 animatorHandler.PlayTargetAnimation("Dead_01", true);
+                GameManager.instance.SetCurrentState(GameManager.gameState.GameOver);
             }
         }
     }

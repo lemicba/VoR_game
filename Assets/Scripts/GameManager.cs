@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager inst;
+    public static GameManager instance;
     public static int score = 0;
+
 
     public enum gameState
     {
@@ -13,19 +15,20 @@ public class GameManager : MonoBehaviour
         Pause,
         GameOver
     }
+
     private gameState currentState;
 
     private void Awake()
     {
-        if (GameManager.inst == null)
-        {
-            GameManager.inst = this;
-            DontDestroyOnLoad(gameObject);
-        } else
+        if (instance != null && instance != this)
         {
             Destroy(gameObject);
+            return;
         }
+        instance = this;
+        DontDestroyOnLoad(gameObject);
     }
+
     private void Update()
     {
         switch (currentState)
@@ -38,6 +41,7 @@ public class GameManager : MonoBehaviour
                 break;
             case gameState.GameOver:
                 Time.timeScale = 0;
+                SceneManager.LoadScene("DieMenu");
                 break;
         }
     }
@@ -54,6 +58,6 @@ public class GameManager : MonoBehaviour
     public static void scorePlayer()
     {
         score = score + 1;
-        Debug.Log(score);
     }
+
 }
